@@ -1,0 +1,10 @@
+ManifestFileVersion: 0
+CRC: 435306489
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: facerecviewanim.assetbundle
+      Dependencies: {}
+    Info_1:
+      Name: facerecview.assetbundle
+      Dependencies: {}

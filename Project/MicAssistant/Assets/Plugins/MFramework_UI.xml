@@ -1,0 +1,320 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MFramework_UI</name>
+    </assembly>
+    <members>
+        <member name="T:MFramework.UI.MFUIServiceFactoryBase">
+            <summary>
+            UI服务抽象类
+            </summary>
+        </member>
+        <member name="F:MFramework.UI.MFUIServiceFactoryBase.abLoader">
+            <summary>
+            AB包加载
+            </summary>
+        </member>
+        <member name="F:MFramework.UI.MFUIServiceFactoryBase.canvasTrans">
+            <summary>
+            画布
+            </summary>
+        </member>
+        <member name="F:MFramework.UI.MFUIServiceFactoryBase.viewFactory">
+            <summary>
+            视图工厂
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.MFUIServiceFactoryBase.GenerateService(System.Int32)">
+            <summary>
+            构建服务
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.MFUIServiceFactoryBase.CreateServiceById(System.Int32)">
+            <summary>
+            创建服务
+            </summary>
+        </member>
+        <member name="T:MFramework.UI.SimpleUIModule">
+            <summary>
+            简单UI模块
+            </summary>
+        </member>
+        <member name="P:MFramework.UI.SimpleUIModule.ServiceFactory">
+            <summary>
+            UI服务工厂
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.SimpleUIModule.Enter(System.Int32,System.Boolean,System.Action)">
+            <summary>
+            进入
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.SimpleUIModule.Quit(System.Int32,System.Boolean,System.Action)">
+            <summary>
+            退出
+            </summary>
+        </member>
+        <member name="T:MFramework.UI.MFUIServiceBase`2">
+            <summary>
+            UI服务基类
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.MFUIServiceBase`2.CreateView(System.Action)">
+            <summary>
+            创建视图
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.MFUIServiceBase`2.Enter(System.Boolean,System.Action)">
+            <summary>
+            进入
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.MFUIServiceBase`2.Quit(System.Boolean,System.Action)">
+            <summary>
+            退出
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.MFUIServiceBase`2.OnCreateCompleted">
+            <summary>
+            创建
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.MFUIServiceBase`2.OnEnterStart">
+            <summary>
+            开始进入
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.MFUIServiceBase`2.OnEnterCompleted">
+            <summary>
+            进入结束
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.MFUIServiceBase`2.OnQuitStart">
+            <summary>
+            开始退出
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.MFUIServiceBase`2.OnQuitCompleted">
+            <summary>
+            退出结束
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.MFUIServiceBase`2.EnterAnim(System.Action)">
+            <summary>
+            进入动画
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.MFUIServiceBase`2.QuitAnim(System.Action)">
+            <summary>
+            退出动画
+            </summary>
+        </member>
+        <member name="T:MFramework.UI.IUIServiceFactory">
+            <summary>
+            UI服务工厂
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.IUIServiceFactory.GenerateService(System.Int32)">
+            <summary>
+            生成
+            </summary>
+        </member>
+        <member name="T:MFramework.UI.IUIModule">
+            <summary>
+            UI模块
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.IUIModule.Enter(System.Int32,System.Boolean,System.Action)">
+            <summary>
+            进入
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.IUIModule.Quit(System.Int32,System.Boolean,System.Action)">
+            <summary>
+            退出
+            </summary>
+        </member>
+        <member name="T:MFramework.UI.IUIService">
+            <summary>
+            UI服务
+            </summary>
+        </member>
+        <member name="P:MFramework.UI.IUIService.AssetBundleLoader">
+            <summary>
+            AB包加载
+            </summary>
+        </member>
+        <member name="P:MFramework.UI.IUIService.ViewFactory">
+            <summary>
+            视图工厂
+            </summary>
+        </member>
+        <member name="P:MFramework.UI.IUIService.CanvasTrans">
+            <summary>
+            画板
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.IUIService.CreateView(System.Action)">
+            <summary>
+            创建
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.IUIService.Enter(System.Boolean,System.Action)">
+            <summary>
+            进入
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.IUIService.Quit(System.Boolean,System.Action)">
+            <summary>
+            退出
+            </summary>
+        </member>
+        <member name="T:MFramework.UI.IResLoader">
+            <summary>
+            资源加载接口
+            </summary>
+        </member>
+        <member name="P:MFramework.UI.IResLoader.AssetBundleLoader">
+            <summary>
+            AB包加载
+            </summary>
+        </member>
+        <member name="T:MFramework.UI.ResInfoAttribute">
+            <summary>
+            UI资源特性
+            </summary>
+        </member>
+        <member name="F:MFramework.UI.ResInfoAttribute.abPath">
+            <summary>
+            AB包路径
+            </summary>
+        </member>
+        <member name="F:MFramework.UI.ResInfoAttribute.assetName">
+            <summary>
+            资源名
+            </summary>
+        </member>
+        <member name="F:MFramework.UI.ResInfoAttribute.async">
+            <summary>
+            是否异步
+            </summary>
+        </member>
+        <member name="T:MFramework.UI.MFViewBase`1">
+            <summary>
+            视图基类
+            属性ResInfo 设置AB包路径以及资源名
+            默认 ResInfo(abPath="AssetBundle/[小写类名].assetbundle",assetName="[类名]",async=false)
+            </summary>
+        </member>
+        <member name="P:MFramework.UI.MFViewBase`1.AssetBundleLoader">
+            <summary>
+            AB包加载
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.MFViewBase`1.Create(UnityEngine.Transform,System.Action)">
+            <summary>
+            创建
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.MFViewBase`1.OnCreate">
+            <summary>
+            完成创建
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.MFViewBase`1.ParseResInfo(System.String@,System.String@,System.Boolean@)">
+            <summary>
+            解析资源信息
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.MFViewBase`1.GenerateDefaultResInfo(System.String@,System.String@)">
+            <summary>
+            生成默认资源信息
+            </summary>
+        </member>
+        <member name="T:MFramework.UI.Utility.SpriteAnimator">
+            <summary>
+            图片帧动画
+            </summary>
+        </member>
+        <member name="P:MFramework.UI.Utility.SpriteAnimator.IsPlaying">
+            <summary>
+            播放标识
+            </summary>
+        </member>
+        <member name="P:MFramework.UI.Utility.SpriteAnimator.Foward">
+            <summary>
+            播放方向(正播/倒播)
+            </summary>
+        </member>
+        <member name="P:MFramework.UI.Utility.SpriteAnimator.AutoPlay">
+            <summary>
+            自动播放
+            </summary>
+        </member>
+        <member name="P:MFramework.UI.Utility.SpriteAnimator.Loop">
+            <summary>
+            循环播放
+            </summary>
+        </member>
+        <member name="P:MFramework.UI.Utility.SpriteAnimator.FPS">
+            <summary>
+            fps
+            </summary>
+        </member>
+        <member name="P:MFramework.UI.Utility.SpriteAnimator.FrameCount">
+            <summary>
+            帧数
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.Utility.SpriteAnimator.LoadSpriteFrames(UnityEngine.Sprite)">
+            <summary>
+            加载序列帧
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.Utility.SpriteAnimator.LoadSpriteFrames(System.Collections.Generic.List{UnityEngine.Sprite})">
+            <summary>
+            加载序列帧
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.Utility.SpriteAnimator.ClearSpriteFrames">
+            <summary>
+            清空序列帧
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.Utility.SpriteAnimator.Play(System.Action)">
+            <summary>
+            播放
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.Utility.SpriteAnimator.PlayReverse(System.Action)">
+            <summary>
+            倒播
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.Utility.SpriteAnimator.Pause">
+            <summary>
+            暂停
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.Utility.SpriteAnimator.Resume">
+            <summary>
+            继续
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.Utility.SpriteAnimator.Stop">
+            <summary>
+            停止
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.Utility.SpriteAnimator.Rewind(System.Action)">
+            <summary>
+            重新播放
+            </summary>
+        </member>
+        <member name="M:MFramework.UI.Utility.SpriteAnimator.SetSprite(System.Int32)">
+            <summary>
+            设置图片
+            </summary>
+        </member>
+    </members>
+</doc>
