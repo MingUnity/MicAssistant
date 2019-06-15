@@ -25,9 +25,9 @@ namespace MicAssistant
             _uiModule?.Enter(viewId, anim, callback);
         }
 
-        public void Quit(int viewId, bool anim = false, Action callback = null)
+        public void Quit(int viewId, bool anim = false, Action callback = null, bool destroy = false)
         {
-            _uiModule?.Quit(viewId, anim, callback);
+            _uiModule?.Quit(viewId, anim, callback, destroy);
         }
     }
 }

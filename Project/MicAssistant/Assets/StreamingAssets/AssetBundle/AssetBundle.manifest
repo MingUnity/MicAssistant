@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 435306489
+CRC: 691375395
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -7,4 +7,7 @@ AssetBundleManifest:
       Dependencies: {}
     Info_1:
       Name: facerecview.assetbundle
+      Dependencies: {}
+    Info_2:
+      Name: memoview.assetbundle
       Dependencies: {}

@@ -16,6 +16,10 @@ namespace MicAssistant
                 case ViewId.FaceRecView:
                     result = new UIFaceRecService();
                     break;
+
+                case ViewId.MemoView:
+                    result = new UIMemoService();
+                    break;
             }
 
             return result;

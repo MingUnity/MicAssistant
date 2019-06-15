@@ -49,7 +49,7 @@
             进入
             </summary>
         </member>
-        <member name="M:MFramework.UI.SimpleUIModule.Quit(System.Int32,System.Boolean,System.Action)">
+        <member name="M:MFramework.UI.SimpleUIModule.Quit(System.Int32,System.Boolean,System.Action,System.Boolean)">
             <summary>
             退出
             </summary>
@@ -129,7 +129,7 @@
             进入
             </summary>
         </member>
-        <member name="M:MFramework.UI.IUIModule.Quit(System.Int32,System.Boolean,System.Action)">
+        <member name="M:MFramework.UI.IUIModule.Quit(System.Int32,System.Boolean,System.Action,System.Boolean)">
             <summary>
             退出
             </summary>

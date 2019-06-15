@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 5330861f24e5d2a42adf14a3610b8b63
-timeCreated: 1558162062
+guid: 8ebdb4f5cdda84e428ee51946057ea90
+timeCreated: 1560516025
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName: {}
@@ -32,7 +32,7 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: -1
-    aniso: 1
+    aniso: -1
     mipBias: -1
     wrapU: 1
     wrapV: 1
@@ -46,7 +46,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 259, y: 251, z: 329, w: 264}
+  spriteBorder: {x: 249, y: 268, z: 321, w: 282}
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1

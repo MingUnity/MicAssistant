@@ -2,6 +2,8 @@
 {
     public enum ViewId
     {
-        FaceRecView = 0
+        FaceRecView = 0,
+
+        MemoView = 1
     }
 }

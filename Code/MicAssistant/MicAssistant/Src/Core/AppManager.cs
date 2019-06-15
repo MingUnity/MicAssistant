@@ -1,6 +1,9 @@
 ﻿using MFramework.UI;
+using Ming.EventHub;
 using MingUnity.Common;
 using MingUnity.InputModule;
+using MingUnity.VoiceInput;
+using MingUnity.WebCamera;
 using UnityEngine;
 
 namespace MicAssistant
@@ -10,6 +13,10 @@ namespace MicAssistant
         private void Start()
         {
             Loom.Initialize();
+
+            WebCamera.Initialize();
+
+            VoiceReceiver.Initialize();
 
             GenerateModules();
 
@@ -24,6 +31,8 @@ namespace MicAssistant
             GenerateInputModule();
 
             GenerateFaceRecModule();
+
+            GenerateSpeechRecModule();
 
             GenerateUIModule();
         }
@@ -44,6 +53,17 @@ namespace MicAssistant
         private void GenerateFaceRecModule()
         {
             FaceRecManager faceRecService = new FaceRecManager();
+
+            MEventHub.Instance.AddListener((int)FaceRecEventId.FaceDetectRequest, faceRecService);
+
+            MEventHub.Instance.AddListener((int)FaceRecEventId.FaceSearchRequest, faceRecService);
+        }
+
+        private void GenerateSpeechRecModule()
+        {
+            SpeechRecManager speechRecManager = new SpeechRecManager();
+
+            MEventHub.Instance.AddListener((int)SpeechRecEventId.SpeechRecRequest, speechRecManager);
         }
 
         /// <summary>
