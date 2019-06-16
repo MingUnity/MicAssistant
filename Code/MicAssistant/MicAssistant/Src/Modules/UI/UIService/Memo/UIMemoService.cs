@@ -116,13 +116,16 @@ namespace MicAssistant
                 return;
             }
 
-            List<string> contents = _viewModel.MemoList;
+            if (!string.IsNullOrEmpty(args.content))
+            {
+                List<string> contents = _viewModel.MemoList;
 
-            contents?.Add(args.content?.TrimEnd('。'));
+                contents?.Add(args.content?.TrimEnd('。'));
 
-            _viewModel.MemoList = contents;
+                _viewModel.MemoList = contents;
 
-            SaveData();
+                SaveData();
+            }
         }
 
         private void ViewModel_OnDeleteItemEvent(int index)
