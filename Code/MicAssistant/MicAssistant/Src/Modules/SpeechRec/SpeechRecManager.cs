@@ -15,9 +15,7 @@ namespace MicAssistant
 
         public void HandleEvent(int eventId, IEventArgs args)
         {
-            SpeechRecEventId id = (SpeechRecEventId)eventId;
-
-            switch (id)
+            switch (eventId)
             {
                 case SpeechRecEventId.SpeechRecRequest:
                     HandleSpeechRecRequest(args as SpeechRecRequestArgs);
@@ -36,7 +34,7 @@ namespace MicAssistant
             {
                 Loom.QueueOnMainThread(() =>
                 {
-                    MEventHub.Instance.Dispatch((int)SpeechRecEventId.SpeechRecResult, new SpeechRecResultArgs()
+                    MEventHub.Instance.Dispatch(SpeechRecEventId.SpeechRecResult, new SpeechRecResultArgs()
                     {
                         content = res?.PriorResult
                     });

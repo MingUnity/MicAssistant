@@ -13,11 +13,17 @@ namespace MicAssistant
 
         private float _viewAlpha;
 
+        private int _deleteItem;
+
+        private string _addItem;
+
         public event Action OnStartRecordEvent;
 
         public event Action OnEndRecordEvent;
 
-        public event Action<int> OnDeleteItemEvent;
+        public event Action OnDeleteItemEvent;
+
+        public event Action OnAddItemEvent;
 
         public override bool Active
         {
@@ -71,9 +77,44 @@ namespace MicAssistant
             }
         }
 
+        public int DeleteItemIndex
+        {
+            get
+            {
+                return _deleteItem;
+            }
+            private set
+            {
+                _deleteItem = value;
+
+                RaisePropertyChanged("DeleteItemIndex");
+            }
+        }
+
+        public string AddItemContent
+        {
+            get
+            {
+                return _addItem;
+            }
+            set
+            {
+                _addItem = value;
+
+                RaisePropertyChanged("AddItemContent");
+            }
+        }
+
         public void DeleteItem(int index)
         {
-            OnDeleteItemEvent?.Invoke(index);
+            DeleteItemIndex = index;
+
+            if (_model != null)
+            {
+                _model.memoContentList.TryRemove(index);
+            }
+
+            OnDeleteItemEvent?.Invoke();
         }
 
         public void MicrophonePointerDown()
@@ -91,6 +132,21 @@ namespace MicAssistant
             Active = _active;
 
             MemoList = MemoList;
+        }
+
+        /// <summary>
+        /// 添加备忘录
+        /// </summary>
+        public void AddItem(string content)
+        {
+            AddItemContent = content;
+
+            if (_model != null)
+            {
+                _model.memoContentList.Add(content);
+            }
+
+            OnAddItemEvent?.Invoke();
         }
     }
 }

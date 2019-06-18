@@ -60,7 +60,7 @@ namespace MicAssistant
 
             _btnMicrophone.OnPointerUpEvent += OnMicrophonePointerUpEvent;
         }
-        
+
         protected override void PropertyChanged(string propertyName)
         {
             if (!string.IsNullOrEmpty(propertyName))
@@ -77,6 +77,14 @@ namespace MicAssistant
 
                     case "MemoContents":
                         RefreshContentList(_viewModel.MemoList);
+                        break;
+
+                    case "DeleteItemIndex":
+                        RemoveItem(_viewModel.DeleteItemIndex);
+                        break;
+
+                    case "AddItemContent":
+                        AddItem(_viewModel.AddItemContent);
                         break;
                 }
             }
@@ -133,6 +141,30 @@ namespace MicAssistant
         private void OnMicrophonePointerUpEvent()
         {
             _viewModel?.MicrophonePointerUp();
+        }
+
+        private void RemoveItem(int index)
+        {
+            ItemMemo item = null;
+
+            if (_itemMemoList.TryGetValue(index, out item))
+            {
+                _itemMemoList.TryRemove(index);
+
+                item?.Shrink(() =>
+                {
+                    _itemPool.RemoveItem(item);
+                });
+            }
+        }
+
+        private void AddItem(string content)
+        {
+            ItemMemo item = CreateItem(content);
+
+            _itemMemoList.Add(item);
+
+            item?.Expands();
         }
     }
 }

@@ -31,7 +31,7 @@ namespace MicAssistant
 
             this._viewModel = viewModel;
 
-            MEventHub.Instance.AddListener((int)FaceRecEventId.FaceSearchResult, this);
+            MEventHub.Instance.AddListener(FaceRecEventId.FaceSearchResult, this);
         }
 
         public override void OnEnter(params object[] keys)
@@ -68,7 +68,7 @@ namespace MicAssistant
 
                 if (faceTex != null)
                 {
-                    MEventHub.Instance.Dispatch((int)FaceRecEventId.FaceSearchRequest, new FaceRecRequestArgs()
+                    MEventHub.Instance.Dispatch(FaceRecEventId.FaceSearchRequest, new FaceRecRequestArgs()
                     {
                         tex = faceTex
                     });
@@ -100,9 +100,7 @@ namespace MicAssistant
 
         public void HandleEvent(int eventId, IEventArgs args)
         {
-            FaceRecEventId id = (FaceRecEventId)eventId;
-
-            switch (id)
+            switch (eventId)
             {
                 case FaceRecEventId.FaceSearchResult:
                     HandleSearchResult(args as FaceSearchResultArgs);
@@ -144,9 +142,9 @@ namespace MicAssistant
                         .SetEase(Ease.Linear)
                         .OnComplete(() =>
                         {
-                            UIManager.Instance.Enter((int)ViewId.MemoView, true, () =>
+                            UIManager.Instance.Enter(ViewId.MemoView, true, () =>
                             {
-                                UIManager.Instance.Quit((int)ViewId.FaceRecView, false, null, true);
+                                UIManager.Instance.Quit(ViewId.FaceRecView, false, null, true);
                             });
                         });
                 }

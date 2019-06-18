@@ -25,9 +25,7 @@ namespace MicAssistant
 
         public void HandleEvent(int eventId, IEventArgs args)
         {
-            FaceRecEventId id = (FaceRecEventId)eventId;
-
-            switch (id)
+            switch (eventId)
             {
                 case FaceRecEventId.FaceDetectRequest:
                     HandleDetectRequest(args as FaceRecRequestArgs);
@@ -50,7 +48,7 @@ namespace MicAssistant
             {
                 Loom.QueueOnMainThread(() =>
                 {
-                    MEventHub.Instance.Dispatch((int)FaceRecEventId.FaceDetectResult, new FaceDetectResultArgs()
+                    MEventHub.Instance.Dispatch(FaceRecEventId.FaceDetectResult, new FaceDetectResultArgs()
                     {
                         res = res
                     });
@@ -69,7 +67,7 @@ namespace MicAssistant
             {
                 Loom.QueueOnMainThread(() =>
                 {
-                    MEventHub.Instance.Dispatch((int)FaceRecEventId.FaceSearchResult, new FaceSearchResultArgs()
+                    MEventHub.Instance.Dispatch(FaceRecEventId.FaceSearchResult, new FaceSearchResultArgs()
                     {
                         res = res
                     });

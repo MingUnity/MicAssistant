@@ -1,9 +1,9 @@
 ﻿namespace MicAssistant
 {
-    public enum ViewId
+    public static class ViewId
     {
-        FaceRecView = 0,
+        public const int FaceRecView = 0;
 
-        MemoView = 1
+        public const int MemoView = 1;
     }
 }

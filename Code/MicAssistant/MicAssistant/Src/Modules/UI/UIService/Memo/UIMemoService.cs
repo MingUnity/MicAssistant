@@ -23,11 +23,13 @@ namespace MicAssistant
 
             _viewModel.OnDeleteItemEvent += ViewModel_OnDeleteItemEvent;
 
+            _viewModel.OnAddItemEvent += ViewModel_OnAddItemEvent;
+
             _dataPath = Path.Combine(Application.persistentDataPath, "MingMemo.mdat");
 
             _voiceReceiver = VoiceReceiver.Default;
 
-            MEventHub.Instance.AddListener((int)SpeechRecEventId.SpeechRecResult, this);
+            MEventHub.Instance.AddListener(SpeechRecEventId.SpeechRecResult, this);
         }
 
         protected override void OnEnterStart()
@@ -37,11 +39,15 @@ namespace MicAssistant
 
         protected override void OnQuitStart()
         {
-            MEventHub.Instance.RemoveListener((int)SpeechRecEventId.SpeechRecResult, this);
+            MEventHub.Instance.RemoveListener(SpeechRecEventId.SpeechRecResult, this);
 
             _viewModel.OnStartRecordEvent -= ViewModel_OnStartRecordEvent;
 
             _viewModel.OnEndRecordEvent -= ViewModel_OnEndRecordEvent;
+
+            _viewModel.OnDeleteItemEvent -= ViewModel_OnDeleteItemEvent;
+
+            _viewModel.OnAddItemEvent -= ViewModel_OnAddItemEvent;
         }
 
         protected override void EnterAnim(Action callback)
@@ -54,9 +60,7 @@ namespace MicAssistant
 
         public void HandleEvent(int eventId, IEventArgs args)
         {
-            SpeechRecEventId id = (SpeechRecEventId)eventId;
-
-            switch (id)
+            switch (eventId)
             {
                 case SpeechRecEventId.SpeechRecResult:
                     HandleSpeechRecResult(args as SpeechRecResultArgs);
@@ -68,7 +72,7 @@ namespace MicAssistant
         {
             _voiceReceiver.StopRecord((byte[] buffer) =>
             {
-                MEventHub.Instance.Dispatch((int)SpeechRecEventId.SpeechRecRequest, new SpeechRecRequestArgs()
+                MEventHub.Instance.Dispatch(SpeechRecEventId.SpeechRecRequest, new SpeechRecRequestArgs()
                 {
                     speechBuffer = buffer
                 });
@@ -118,28 +122,18 @@ namespace MicAssistant
 
             if (!string.IsNullOrEmpty(args.content))
             {
-                List<string> contents = _viewModel.MemoList;
-
-                contents?.Add(args.content?.TrimEnd('。'));
-
-                _viewModel.MemoList = contents;
-
-                SaveData();
+                _viewModel.AddItem(args.content?.TrimEnd('。'));
             }
         }
 
-        private void ViewModel_OnDeleteItemEvent(int index)
+        private void ViewModel_OnDeleteItemEvent()
         {
-            List<string> list = _viewModel.MemoList;
+            SaveData();
+        }
 
-            if (index >= 0 && list != null && list.Count > index)
-            {
-                list.RemoveAt(index);
-
-                _viewModel.MemoList = list;
-
-                SaveData();
-            }
+        private void ViewModel_OnAddItemEvent()
+        {
+            SaveData();
         }
     }
 }

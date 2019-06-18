@@ -52,9 +52,9 @@ namespace MicAssistant
         {
             _face = null;
 
-            MEventHub.Instance.AddListener((int)FaceRecEventId.FaceDetectResult, this);
+            MEventHub.Instance.AddListener(FaceRecEventId.FaceDetectResult, this);
 
-            MEventHub.Instance.AddListener((int)FaceRecEventId.FaceSearchResult, this);
+            MEventHub.Instance.AddListener(FaceRecEventId.FaceSearchResult, this);
 
             if (_viewModel != null)
             {
@@ -72,7 +72,7 @@ namespace MicAssistant
             {
                 Task.CreateTask(DelayHandleFace(tex));
 
-                MEventHub.Instance.Dispatch((int)FaceRecEventId.FaceDetectRequest, new FaceRecRequestArgs()
+                MEventHub.Instance.Dispatch(FaceRecEventId.FaceDetectRequest, new FaceRecRequestArgs()
                 {
                     tex = tex
                 });
@@ -83,7 +83,7 @@ namespace MicAssistant
         {
             _face = null;
 
-            MEventHub.Instance.RemoveListener((int)FaceRecEventId.FaceDetectResult, this);
+            MEventHub.Instance.RemoveListener(FaceRecEventId.FaceDetectResult, this);
 
             if (_viewModel != null)
             {
@@ -98,9 +98,7 @@ namespace MicAssistant
 
         public void HandleEvent(int eventId, IEventArgs args)
         {
-            FaceRecEventId id = (FaceRecEventId)eventId;
-
-            switch (id)
+            switch (eventId)
             {
                 case FaceRecEventId.FaceDetectResult:
                     HandleDetectResult(args as FaceDetectResultArgs);

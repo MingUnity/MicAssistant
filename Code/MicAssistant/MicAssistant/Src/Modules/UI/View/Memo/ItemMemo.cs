@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,14 @@ namespace MicAssistant
         private Text _txtMemo;
 
         private Button _btnDelete;
+
+        private Vector2 _originSize;
+
+        private Tween _tweenExpands;
+
+        private Tween _tweenShrink;
+
+        private readonly float TweenDuration = 1;
 
         public event Action OnDeleteButtonClickEvent;
 
@@ -50,6 +59,30 @@ namespace MicAssistant
             this._btnDelete = _root.Find("BtnDelete").GetComponent<Button>();
 
             _btnDelete.onClick.AddListener(OnDeleteButtonClick);
+
+            _originSize = _root.sizeDelta;
+        }
+
+        /// <summary>
+        /// 扩展
+        /// </summary>
+        public void Expands(Action callback = null)
+        {
+            Vector2 size = _root.sizeDelta;
+
+            _tweenExpands = DOTween.To(() => new Vector2(0, size.y), x => _root.sizeDelta = x, _originSize, TweenDuration)
+                .OnComplete(() => callback?.Invoke());
+        }
+
+        /// <summary>
+        /// 收缩
+        /// </summary>
+        public void Shrink(Action callback = null)
+        {
+            Vector2 size = _root.sizeDelta;
+
+            _tweenExpands = DOTween.To(() => size, x => _root.sizeDelta = x, new Vector2(0, _originSize.y), TweenDuration)
+                .OnComplete(() => callback?.Invoke());
         }
 
         public void SetAsLastSibling()

@@ -11,7 +11,7 @@ namespace MicAssistant
         {
             IUIService result = null;
 
-            switch ((ViewId)viewId)
+            switch (viewId)
             {
                 case ViewId.FaceRecView:
                     result = new UIFaceRecService();

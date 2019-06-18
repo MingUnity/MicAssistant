@@ -54,16 +54,16 @@ namespace MicAssistant
         {
             FaceRecManager faceRecService = new FaceRecManager();
 
-            MEventHub.Instance.AddListener((int)FaceRecEventId.FaceDetectRequest, faceRecService);
+            MEventHub.Instance.AddListener(FaceRecEventId.FaceDetectRequest, faceRecService);
 
-            MEventHub.Instance.AddListener((int)FaceRecEventId.FaceSearchRequest, faceRecService);
+            MEventHub.Instance.AddListener(FaceRecEventId.FaceSearchRequest, faceRecService);
         }
 
         private void GenerateSpeechRecModule()
         {
             SpeechRecManager speechRecManager = new SpeechRecManager();
 
-            MEventHub.Instance.AddListener((int)SpeechRecEventId.SpeechRecRequest, speechRecManager);
+            MEventHub.Instance.AddListener(SpeechRecEventId.SpeechRecRequest, speechRecManager);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace MicAssistant
         /// </summary>
         private void Entry()
         {
-            UIManager.Instance.Enter((int)ViewId.FaceRecView);
+            UIManager.Instance.Enter(ViewId.FaceRecView);
         }
     }
 }

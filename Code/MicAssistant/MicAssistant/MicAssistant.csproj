@@ -117,6 +117,7 @@
     <Compile Include="Src\Modules\UI\View\Memo\PointerDownUpListener.cs" />
     <Compile Include="Src\Modules\UI\View\ViewId.cs" />
     <Compile Include="Src\Utility\BinaryConverter.cs" />
+    <Compile Include="Src\Utility\Extends.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
