@@ -36,12 +36,16 @@ namespace MicAssistant
         /// </summary>
         private void HandleLoginRequest()
         {
+            bool result = false;
+
             if (File.Exists(_configPath))
             {
                 string configContent = File.ReadAllText(_configPath);
 
-                MEventHub.Instance.Dispatch(LoginEventId.LoginResult, new LoginResultArgs() { logined = GetDateValue() == configContent });
+                result = GetDateValue() == configContent;
             }
+
+            MEventHub.Instance.Dispatch(LoginEventId.LoginResult, new LoginResultArgs() { logined = result });
         }
 
         /// <summary>

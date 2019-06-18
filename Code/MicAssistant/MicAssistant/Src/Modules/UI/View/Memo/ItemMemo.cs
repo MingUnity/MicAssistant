@@ -22,7 +22,7 @@ namespace MicAssistant
 
         private Tween _tweenShrink;
 
-        private readonly float TweenDuration = 1;
+        private readonly float TweenDuration = 0.5f;
 
         public event Action OnDeleteButtonClickEvent;
 
@@ -47,6 +47,8 @@ namespace MicAssistant
             set
             {
                 _root.gameObject.SetActive(value);
+
+                _btnDelete.gameObject.SetActive(value);
             }
         }
 
@@ -68,11 +70,18 @@ namespace MicAssistant
         /// </summary>
         public void Expands(Action callback = null)
         {
+            _btnDelete.gameObject.SetActive(false);
+
             Vector2 size = _root.sizeDelta;
 
             _tweenExpands = DOTween.To(() => new Vector2(0, size.y), x => _root.sizeDelta = x, _originSize, TweenDuration)
                 .SetEase(Ease.Linear)
-                .OnComplete(() => callback?.Invoke());
+                .OnComplete(() =>
+                {
+                    _btnDelete.gameObject.SetActive(true);
+
+                    callback?.Invoke();
+                });
         }
 
         /// <summary>
@@ -80,9 +89,11 @@ namespace MicAssistant
         /// </summary>
         public void Shrink(Action callback = null)
         {
+            _btnDelete.gameObject.SetActive(false);
+
             Vector2 size = _root.sizeDelta;
 
-            _tweenExpands = DOTween.To(() => size, x => _root.sizeDelta = x, new Vector2(0, _originSize.y), TweenDuration)
+            _tweenShrink = DOTween.To(() => size, x => _root.sizeDelta = x, new Vector2(0, _originSize.y), TweenDuration)
                 .SetEase(Ease.Linear)
                 .OnComplete(() => callback?.Invoke());
         }

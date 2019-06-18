@@ -87,6 +87,8 @@ namespace MicAssistant
             LoginManager loginManager = new LoginManager();
 
             MEventHub.Instance.AddListener(LoginEventId.LoginRequest, loginManager);
+
+            MEventHub.Instance.AddListener(LoginEventId.ChangeLogin, loginManager);
         }
 
         /// <summary>

@@ -17,7 +17,7 @@ namespace MicAssistant
             this._template = template;
         }
 
-        public ItemMemo GetItem(Transform parent = null)
+        public ItemMemo GetItem(bool active = true, Transform parent = null)
         {
             ItemMemo item = null;
 
@@ -34,7 +34,7 @@ namespace MicAssistant
                 item = new ItemMemo(root);
             }
 
-            item.Active = true;
+            item.Active = active;
 
             return item;
         }

@@ -98,16 +98,7 @@ namespace MicAssistant
 
                 for (int i = 0; i < memoList.Count; i++)
                 {
-                    ItemMemo item = CreateItem(memoList[i]);
-
-                    int index = i;
-
-                    item.OnDeleteButtonClickEvent += () =>
-                    {
-                        _viewModel.DeleteItem(index);
-                    };
-
-                    _itemMemoList.Add(item);
+                    CreateItem(memoList[i]);
                 }
             }
         }
@@ -122,9 +113,16 @@ namespace MicAssistant
             _itemMemoList.Clear();
         }
 
-        private ItemMemo CreateItem(string content)
+        private ItemMemo CreateItem(string content, bool active = true)
         {
-            ItemMemo itemMemo = _itemPool.GetItem(_scrollMemo.content);
+            ItemMemo itemMemo = _itemPool.GetItem(active, _scrollMemo.content);
+
+            _itemMemoList.Add(itemMemo);
+
+            itemMemo.OnDeleteButtonClickEvent += () =>
+            {
+                _viewModel.DeleteItem(_itemMemoList.IndexOf(itemMemo));
+            };
 
             itemMemo.SetAsLastSibling();
 
@@ -161,8 +159,6 @@ namespace MicAssistant
         private void AddItem(string content)
         {
             ItemMemo item = CreateItem(content);
-
-            _itemMemoList.Add(item);
 
             item?.Expands();
         }
