@@ -35,4 +35,22 @@
         /// </summary>
         public const int SpeechRecResult = 101;
     }
+
+    public static class LoginEventId
+    {
+        /// <summary>
+        /// 登录请求
+        /// </summary>
+        public const int LoginRequest = 200;
+
+        /// <summary>
+        /// 登录返回结果
+        /// </summary>
+        public const int LoginResult = 201;
+
+        /// <summary>
+        /// 改变登录状态
+        /// </summary>
+        public const int ChangeLogin = 202;
+    }
 }

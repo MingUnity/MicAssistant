@@ -94,9 +94,11 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Src\Core\AppManager.cs" />
+    <Compile Include="Src\Core\Entry.cs" />
     <Compile Include="Src\Core\Program.cs" />
     <Compile Include="Src\Modules\Event\EventId.cs" />
     <Compile Include="Src\Modules\FaceRec\FaceRecManager.cs" />
+    <Compile Include="Src\Modules\Login\LoginManager.cs" />
     <Compile Include="Src\Modules\SpeechRec\SpeechRecManager.cs" />
     <Compile Include="Src\Modules\UI\Model\Memo\MemoModel.cs" />
     <Compile Include="Src\Modules\UI\UIManager.cs" />

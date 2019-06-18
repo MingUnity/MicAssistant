@@ -20,7 +20,7 @@ namespace MicAssistant
 
             GenerateModules();
 
-            Entry();
+            AppEntry();
         }
 
         /// <summary>
@@ -35,6 +35,8 @@ namespace MicAssistant
             GenerateSpeechRecModule();
 
             GenerateUIModule();
+
+            GenerateLoginModule();
         }
 
         /// <summary>
@@ -59,6 +61,9 @@ namespace MicAssistant
             MEventHub.Instance.AddListener(FaceRecEventId.FaceSearchRequest, faceRecService);
         }
 
+        /// <summary>
+        /// 构建语音识别模块
+        /// </summary>
         private void GenerateSpeechRecModule()
         {
             SpeechRecManager speechRecManager = new SpeechRecManager();
@@ -75,11 +80,21 @@ namespace MicAssistant
         }
 
         /// <summary>
+        /// 构建登录模块
+        /// </summary>
+        private void GenerateLoginModule()
+        {
+            LoginManager loginManager = new LoginManager();
+
+            MEventHub.Instance.AddListener(LoginEventId.LoginRequest, loginManager);
+        }
+
+        /// <summary>
         /// 进入
         /// </summary>
-        private void Entry()
+        private void AppEntry()
         {
-            UIManager.Instance.Enter(ViewId.FaceRecView);
+            new Entry().Start();
         }
     }
 }

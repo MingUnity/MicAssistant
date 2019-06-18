@@ -55,6 +55,7 @@ namespace MicAssistant
             _viewModel.ViewAlpha = 0;
 
             DOTween.To(() => _viewModel.ViewAlpha, x => _viewModel.ViewAlpha = x, 1, 1)
+                .SetEase(Ease.Linear)
                 .OnComplete(() => { callback?.Invoke(); });
         }
 

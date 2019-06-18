@@ -123,6 +123,8 @@ namespace MicAssistant
                 if (user != null && user.user_id == "CM" && user.score >= 80)
                 {
                     _permit = true;
+
+                    MEventHub.Instance.Dispatch(LoginEventId.ChangeLogin, new ChangeLoginStatusArgs() { login = true });
                 }
             }
         }

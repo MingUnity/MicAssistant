@@ -71,6 +71,7 @@ namespace MicAssistant
             Vector2 size = _root.sizeDelta;
 
             _tweenExpands = DOTween.To(() => new Vector2(0, size.y), x => _root.sizeDelta = x, _originSize, TweenDuration)
+                .SetEase(Ease.Linear)
                 .OnComplete(() => callback?.Invoke());
         }
 
@@ -82,6 +83,7 @@ namespace MicAssistant
             Vector2 size = _root.sizeDelta;
 
             _tweenExpands = DOTween.To(() => size, x => _root.sizeDelta = x, new Vector2(0, _originSize.y), TweenDuration)
+                .SetEase(Ease.Linear)
                 .OnComplete(() => callback?.Invoke());
         }
 
